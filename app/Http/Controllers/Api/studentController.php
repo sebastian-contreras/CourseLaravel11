@@ -63,7 +63,7 @@ class studentController extends Controller
 
     public function getStudent(Request $request)
     {
-        $student = Student::with(['adress','devices'])->find( $request->id );
+        $student = Student::with(['adress','devices','courses'])->find( $request->id );
         if (!$student) {
             return response()->json([
                 'message' => 'No se encontro el estudiante',
@@ -176,6 +176,25 @@ class studentController extends Controller
         ];
         return response()->json($data, 200);
 
-    }
+   }
 
+   public function enrollCourse(Request $request,$id){
+        $student = Student::find($id);
+        $student->courses()->attach($request->courses);
+        $student->save();
+        return response()->json('Se modificaron correcmente los cursos del estudiante',200);
+        
+   }
+   public function notEnrollCourse(Request $request,$id){
+    $student = Student::find($id);
+    $student->courses()->detach($request->courses);
+    $student->save();
+    return response()->json('Se modificaron correcmente los cursos del estudiante',200);
+}
+public function modifyEnrollCourse(Request $request,$id){
+    $student = Student::with('courses')->find($id);
+    $student->courses()->sync($request->courses);
+    $student->save();
+    return response()->json('Se modificaron correcmente los cursos del estudiante',200);
+}
 }

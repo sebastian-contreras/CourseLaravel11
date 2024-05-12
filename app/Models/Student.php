@@ -23,4 +23,8 @@ class Student extends Model
     public function devices(){
         return $this->hasMany(Device::class,'student_id','id');
     }
+
+    public function courses(){
+        return $this->belongsToMany(Course::class,'course_student')->withTimestamps();
+    }
 }
