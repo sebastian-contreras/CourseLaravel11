@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\adressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,6 @@ Route::post('/students',[studentController::class,'newStudent']);
 Route::put('/students/{id}',[studentController::class,'updateStudent']);
 Route::patch('/students/{id}',[studentController::class,'updatePartialStudent']);
 Route::delete('/students/{id}',[studentController::class,'deleteStudent']);
+
+
+Route::get('/adresses/{id}', [adressController::class,'getAdressStudent']);

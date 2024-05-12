@@ -15,4 +15,8 @@ class Student extends Model
         'phone',
         'language'
     ];
+
+    public function adress(){
+        return $this->hasOne(Adress::class,'student_id','id');
+    }
 }

@@ -71,7 +71,7 @@ class studentController extends Controller
             ], 200);
         }
         $data = [
-            'student' => $student,
+            'student' => [$student, $student->adress],
             'status' => '200'
         ];
         return response()->json($data, 200);
