@@ -3,6 +3,9 @@
 use App\Http\Controllers\Api\adressController;
 use App\Http\Controllers\Api\courseController;
 use App\Http\Controllers\Api\deviceController;
+use App\Models\Course;
+use App\Models\Device;
+use App\Models\DeviceAccount;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,4 +49,12 @@ Route::get('/addRelacion',function () {
 Route::get('/hasonetest',function () {
     $student = Student::with('adress')->find(2);
     return $student->departamento;
+});
+//test hasManyThrought
+Route::get('/hasmanytest',function () {
+    $student = Student::with(['devices'])->find(2);
+    // $devices = Device::with('accounts')->find(1);
+
+return $student->accounts;
+
 });

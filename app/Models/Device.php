@@ -11,4 +11,9 @@ class Device extends Model
     public function student(){
         return $this->belongsTo(Student::class,"student_id","id");
     }
+    public function accounts(){
+        return $this->hasMany(DeviceAccount::class,"device_id","id");
+    }
+
+
 }

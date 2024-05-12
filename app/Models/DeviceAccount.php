@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Asignature extends Model
+class DeviceAccount extends Model
 {
     use HasFactory;
-
-    public function courses(){
-        return $this->belongsToMany(Course::class,'course_id','id');
+    public function device(){
+        return $this->belongsTo(Device::class,'device_id','id');
     }
 }

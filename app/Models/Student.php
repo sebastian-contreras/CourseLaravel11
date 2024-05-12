@@ -41,4 +41,8 @@ class Student extends Model
             // cuarto argumento refiere a la llave desde donde accede departamento y adress
 
     }
+
+    public function accounts(){
+        return $this->hasManyThrough(DeviceAccount::class, Device::class,'student_id','device_id');
+    }
 }
