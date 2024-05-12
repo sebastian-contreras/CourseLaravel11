@@ -42,3 +42,8 @@ Route::get('/addRelacion',function () {
 
 });
 
+//test hasOneThrought
+Route::get('/hasonetest',function () {
+    $student = Student::with('adress')->find(2);
+    return $student->departamento;
+});

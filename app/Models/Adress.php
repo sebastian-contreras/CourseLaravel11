@@ -11,4 +11,7 @@ class Adress extends Model
     public function student(){
         return $this->belongsTo(Student::class,'student_id','id');
     }
+    public function departamento(){
+        return $this->hasOne(Departamento::class,'adress_id','id');
+    }
 }

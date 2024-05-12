@@ -12,4 +12,7 @@ class Course extends Model
     public function students(){
         return $this->belongsToMany(Student::class);
     }
+    // public function asignature(){
+    //     return $this->hasOne(Asignature::class,"course_id","id");
+    // }
 }
