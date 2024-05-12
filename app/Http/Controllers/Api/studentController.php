@@ -63,7 +63,7 @@ class studentController extends Controller
 
     public function getStudent(Request $request)
     {
-        $student = Student::find($request->id);
+        $student = Student::with(['adress','devices'])->find( $request->id );
         if (!$student) {
             return response()->json([
                 'message' => 'No se encontro el estudiante',
@@ -71,7 +71,7 @@ class studentController extends Controller
             ], 200);
         }
         $data = [
-            'student' => [$student, $student->adress],
+            'student' => $student,
             'status' => '200'
         ];
         return response()->json($data, 200);

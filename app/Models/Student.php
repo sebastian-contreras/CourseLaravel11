@@ -19,4 +19,8 @@ class Student extends Model
     public function adress(){
         return $this->hasOne(Adress::class,'student_id','id');
     }
+
+    public function devices(){
+        return $this->hasMany(Device::class,'student_id','id');
+    }
 }
